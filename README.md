@@ -11,16 +11,22 @@ O sistema permite que usuários criem tickets de suporte, enviem mensagens dentr
 # 📸 Screenshots
 
 ### Login
-![Login](SpringSystemLogin/images/login.JPEG)
+
+![login](https://github.com/user-attachments/assets/01c6789b-aa99-4ec7-8f9a-9edc950b0c80)
 
 ### Cadastro
-![Cadastro](SpringSystemLogin/images/cadastro.JPEG)
+
+![cadastro](https://github.com/user-attachments/assets/63ec1244-bd62-4652-8053-766432681936)
+
 
 ### Sistema de Tickets
-![Tickets](SpringSystemLogin/images/ticket.JPEG)
+
+![ticket](https://github.com/user-attachments/assets/45d23fcf-a712-4cdd-83ea-561a5ee64e58)
+
 
 ### Painel de Administração
-![Admin](SpringSystemLogin/images/admin-usuarios.JPEG)
+
+![admin-usuarios](https://github.com/user-attachments/assets/92ed480d-23f4-4cff-9a76-7bdfdbf0a837)
 
 ---
 
