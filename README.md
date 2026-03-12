@@ -11,16 +11,16 @@ O sistema permite que usuários criem tickets de suporte, enviem mensagens dentr
 # 📸 Screenshots
 
 ### Login
-![Login](https://raw.githubusercontent.com/OtavioChad/springboot-helpdesk-ticket-system/master/SpringSystemLogin/images/login.JPEG)
+![Login](SpringSystemLogin/images/login.JPEG)
 
 ### Cadastro
-![Cadastro](https://raw.githubusercontent.com/OtavioChad/springboot-helpdesk-ticket-system/master/SpringSystemLogin/images/cadastro.JPEG)
+![Cadastro](SpringSystemLogin/images/cadastro.JPEG)
 
 ### Sistema de Tickets
-![Tickets](https://raw.githubusercontent.com/OtavioChad/springboot-helpdesk-ticket-system/master/SpringSystemLogin/images/ticket.JPEG)
+![Tickets](SpringSystemLogin/images/ticket.JPEG)
 
 ### Painel de Administração
-![Admin](https://raw.githubusercontent.com/OtavioChad/springboot-helpdesk-ticket-system/master/SpringSystemLogin/images/admin-usuarios.JPEG)
+![Admin](SpringSystemLogin/images/admin-usuarios.JPEG)
 
 ---
 
