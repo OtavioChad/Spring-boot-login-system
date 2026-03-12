@@ -11,20 +11,16 @@ O sistema permite que usuários criem tickets de suporte, enviem mensagens dentr
 # 📸 Screenshots
 
 ### Login
-
-<img src="images/login.JPEG" width="700"/>
+<img src="SpringSystemLogin/images/login.JPEG" width="700"/>
 
 ### Cadastro
-
-<img src="images/cadastro.JPEG" width="700"/>
+<img src="SpringSystemLogin/images/cadastro.JPEG" width="700"/>
 
 ### Sistema de Tickets
-
-<img src="images/ticket.JPEG" width="700"/>
+<img src="SpringSystemLogin/images/ticket.JPEG" width="700"/>
 
 ### Painel de Administração
-
-<img src="images/admin-usuarios.JPEG" width="700"/>
+<img src="SpringSystemLogin/images/admin-usuarios.JPEG" width="700"/>
 
 ---
 
