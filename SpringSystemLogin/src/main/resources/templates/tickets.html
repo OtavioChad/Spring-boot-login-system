@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Meus tickets</title>
+<link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+
+<div class="tickets-container">
+
+<div class="tickets-list">
+
+<div class="conteudo-header">
+
+<h2>Meus Tickets</h2>
+
+<div th:if="${role == 'ADMIN'}">
+<span style="color:red">ADMIN</span>
+</div>
+
+<p th:if="${role == 'USER'}">
+Acompanhe todos os tickets que você enviou.
+</p>
+
+<p th:if="${role == 'ADMIN'}">
+Visualize e gerencie todos os tickets do sistema.
+</p>
+
+</div>
+
+<div class="tickets-scroll">
+
+<div th:each="ticket : ${tickets}" class="ticket-item">
+
+<!-- USUÁRIO -->
+
+<p class="ticket-user"
+   th:text="${nomesUsuarios[ticket.usuarioId]}">
+</p>
+
+<p class="ticket-user"
+   th:text="${emailsUsuarios[ticket.usuarioId]}">
+</p>
+
+<!-- TÍTULO -->
+
+<h3 th:text="${ticket.titulo}"></h3>
+
+<!-- DATA -->
+
+<span class="ticket-date"
+      th:text="${#temporals.format(ticket.dataCriacao, 'dd/MM/yyyy HH:mm')}">
+</span>
+
+<!-- CONTEÚDO -->
+
+<p class="ticket-content"
+   th:text="${ticket.conteudo}">
+</p>
+
+<!-- STATUS -->
+
+<span class="status"
+      th:classappend="' ' + ${ticket.status}"
+      th:text="${ticket.status}">
+</span>
+
+<!-- ADMIN ALTERA STATUS -->
+
+<div th:if="${role == 'ADMIN'}">
+
+<form th:action="@{/tickets/status}" method="post">
+
+<input type="hidden" name="id" th:value="${ticket.id}">
+
+<select name="status">
+
+<option value="ABERTO"
+th:selected="${ticket.status == 'ABERTO'}">
+ABERTO
+</option>
+
+<option value="EM_ANALISE"
+th:selected="${ticket.status == 'EM_ANALISE'}">
+EM ANALISE
+</option>
+
+<option value="FINALIZADO"
+th:selected="${ticket.status == 'FINALIZADO'}">
+FINALIZADO
+</option>
+
+</select>
+
+<button type="submit">Atualizar Status</button>
+
+</form>
+
+</div>
+
+<!-- CHAT DO TICKET -->
+
+<div class="ticket-chat">
+
+<h4>Conversa</h4>
+
+<div th:each="msg : ${ticketMensagens[ticket.id]}"
+     class="chat-msg"
+     th:classappend="${msg.usuarioId == ticket.usuarioId} ? '' : ' chat-admin'">
+
+<div class="chat-user"
+th:text="${msg.usuarioId == ticket.usuarioId} ? ${nomesUsuarios[msg.usuarioId]} : 'SUPORTE'">
+</div>
+
+<p th:text="${msg.mensagem}"></p>
+
+</div>
+
+</div>
+
+<!-- RESPONDER TICKET -->
+<div th:if="${ticket.status != T(SpringSystemLogin.SpringSystemLogin.model.TicketStatus).FINALIZADO}">
+<form th:action="@{/tickets/mensagem}" method="post" class="chat-form">
+
+<input type="hidden" name="ticketId" th:value="${ticket.id}">
+
+<textarea name="mensagem" placeholder="Responder..." required></textarea>
+
+<button type="submit">Enviar resposta</button>
+
+</form>
+
+<!-- DELETAR -->
+
+<form th:action="@{/tickets/deletar}" method="post">
+
+<input type="hidden" name="id" th:value="${ticket.id}">
+
+<button type="submit">Deletar</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CRIAR TICKET -->
+
+<div class="ticket-create">
+
+<h2>Criar Ticket</h2>
+
+<form th:action="@{/tickets/criar}" method="post">
+
+<input type="text" name="titulo" placeholder="Título" required>
+
+<textarea name="conteudo" placeholder="Conteúdo" required></textarea>
+
+<button type="submit">Enviar Ticket</button>
+
+<div class="input-group">
+<button type="button" onclick="window.location.href='/'">
+Voltar
+</button>
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

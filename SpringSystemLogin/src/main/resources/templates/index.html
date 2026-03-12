@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -22,8 +22,25 @@
             </button>
         </div>
 
+        <div class="input-group" th:if="${role == 'USER'}">
+   			 <button onclick="window.location.href='/tickets'">
+       			 Meus Tickets
+    		</button>
+		</div>
+
+		<div class="input-group" th:if="${role == 'ADMIN'}">
+    		<button onclick="window.location.href='/tickets'">
+       			 Tickets
+    		</button>
+		</div>
+		<div class="input-group" th:if="${role == 'ADMIN'}">
+			<a th:href="@{/admin/usuarios}">
+			<button>Gerenciar Usuários</button>
+			</a>
+		</div>
+
         <div class="input-group">
-            <button onclick="window.location.href='/configuracoes'">
+            <button onclick="window.location.href='/configs'">
                 Configurações
             </button>
         </div>

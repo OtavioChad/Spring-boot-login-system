@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Perfil</title>
+<link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+
+<div class="perfil-container">
+
+    <!-- LADO ESQUERDO -->
+    <div class="perfil-info">
+
+        <div class="conteudo-header">
+            <h2>Meu Perfil</h2>
+            <p>Veja suas informações e atividade no sistema.</p>
+        </div>
+
+        <div class="ticket-card">
+            <h3 th:text="${usuario.nome}">Nome do Usuário</h3>
+            <p th:text="${usuario.email}">email@email.com</p>
+        </div>
+
+        <div class="tickets-cards">
+
+            <div class="ticket-card">
+                <h3>📌 Tickets Criados</h3>
+                <p th:text="${ticketsCriados}">12</p>
+            </div>
+
+            <div class="ticket-card">
+                <h3>📊 Em Análise</h3>
+                <p th:text="${ticketsAnalise}">3</p>
+            </div>
+
+            <div class="ticket-card">
+                <h3>✅ Finalizados</h3>
+                <p th:text="${ticketsFinalizados}">9</p>
+            </div>
+
+        </div>
+
+        <div class="perfil-actions">
+            <a th:href="@{/tickets}">
+                <button>Ver Meus Tickets</button>
+            </a>
+        </div>
+
+    </div>
+
+
+    <!-- LADO DIREITO -->
+    <div class="perfil-edit">
+
+        <div class="conteudo-header">
+            <h2>Editar Perfil</h2>
+            <p>Atualize suas informações.</p>
+        </div>
+
+<!-- Mensagem de erro de senha -->
+<div th:if="${param.erro != null and param.erro.contains('senha')}" class="error-message">
+    Senha incorreta.
+</div>
+
+<!-- Mensagem de erro de email duplicado -->
+<div th:if="${param.erro != null and param.erro.contains('email')}" class="error-message">
+    Este email já está em uso.
+</div>
+
+<!-- Mensagem de sucesso -->
+<div th:if="${param.sucesso != null}" style="color:green; margin-bottom:15px;">
+    Perfil atualizado com sucesso.
+</div>
+
+        <form th:action="@{/perfil/atualizar}" method="post">
+
+    <div class="input-group">
+        <label>Nome</label>
+        <input type="text" name="nome" th:value="${usuario.nome}" required>
+    </div>
+
+    <div class="input-group">
+        <label>Email</label>
+        <input type="email" name="email" th:value="${usuario.email}" required>
+    </div>
+
+    <div class="input-group">
+        <label>Senha atual</label>
+        <input type="password" name="senhaAtual" placeholder="Digite sua senha para confirmar" required>
+    </div>
+
+    <button type="submit">Salvar Alterações</button>
+    
+    <button type="button" onclick="window.location.href='/'">
+	Voltar
+	</button>
+
+</form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

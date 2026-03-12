@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Painel de Usuários</title>
+<link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<div class="usuarios-container">
+
+  <!-- ESQUERDA: FORMULARIO -->
+  <div class="usuario-edit">
+
+    <div class="conteudo-header">
+      <h2>Editar Usuário</h2>
+      <p>Selecione um usuário na lista para editar.</p>
+    </div>
+
+    <form action="/admin/usuarios/atualizar" method="post">
+
+      <input type="hidden" id="usuarioId" name="id">
+
+      <div class="input-group">
+        <label>Nome</label>
+        <input type="text" id="usuarioNome" name="nome">
+      </div>
+
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" id="usuarioEmail" name="email">
+        <span th:if="${erro == 'email'}" class="error-message">Este email já está em uso.</span>
+      </div>
+
+      <div class="input-group">
+        <label>Nova Senha</label>
+        <input type="password" name="novaSenha" placeholder="Deixe vazio para não alterar">
+      </div>
+
+      <div class="input-group">
+        <label>Permissão</label>
+        <select id="usuarioRole" name="role">
+          <option value="USER">USER</option>
+          <option value="ADMIN">ADMIN</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label>Confirme sua senha de admin</label>
+        <input type="password" name="senhaAdmin" placeholder="Obrigatório para salvar alterações">
+        <span th:if="${erro == 'senha'}" class="error-message">Senha do administrador incorreta.</span>
+      </div>
+
+      <span th:if="${sucesso}" class="success-message">Usuário atualizado com sucesso.</span>
+
+      <button type="submit">Salvar Alterações</button>
+
+    </form>
+  </div>
+
+  <!-- DIREITA: LISTA DE USUARIOS -->
+  <div class="usuarios-list">
+
+    <input type="text" id="buscarUsuario" placeholder="Buscar usuário por email...">
+
+    <div class="conteudo-header">
+      <h2>Usuários</h2>
+      <p>Lista de todas as contas do sistema</p>
+    </div>
+
+    <div class="usuarios-scroll">
+      <div class="usuario-card"
+           th:each="usuario : ${usuarios}"
+           th:attr="data-id=${usuario.id},
+                    data-nome=${usuario.nome},
+                    data-email=${usuario.email},
+                    data-role=${usuario.role}">
+        <h3 th:text="${usuario.nome}"></h3>
+        <p th:text="${usuario.email}"></p>
+      </div>
+    </div>
+
+    <button type="button" onclick="window.location.href='/'">Voltar</button>
+  </div>
+
+</div>
+
+<script>
+const cards = document.querySelectorAll(".usuario-card")
+cards.forEach(card => {
+  card.addEventListener("click", function(){
+    cards.forEach(c => c.classList.remove("selected"))
+    this.classList.add("selected")
+    document.getElementById("usuarioId").value = this.dataset.id
+    document.getElementById("usuarioNome").value = this.dataset.nome
+    document.getElementById("usuarioEmail").value = this.dataset.email
+    document.getElementById("usuarioRole").value = this.dataset.role
+  })
+})
+
+document.getElementById("buscarUsuario").addEventListener("keyup", function(){
+  const filtro = this.value.toLowerCase()
+  const usuarios = document.querySelectorAll(".usuario-card")
+  usuarios.forEach(usuario => {
+    const email = usuario.dataset.email.toLowerCase()
+    usuario.style.display = email.includes(filtro) ? "block" : "none"
+  })
+})
+</script>
+
+</body>
+</html>

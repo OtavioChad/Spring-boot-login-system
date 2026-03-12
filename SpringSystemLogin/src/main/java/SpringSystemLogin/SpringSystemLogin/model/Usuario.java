@@ -23,6 +23,8 @@ public class Usuario {
 	@NotEmpty
 	private String senha;
 	
+	private String role;
+	
 	@Transient
 	private String confirmarSenha;
 
@@ -61,4 +63,13 @@ public class Usuario {
 	public long getId() {
 		return id;
 	}
+
+public String getRole() {
+    return role;
+}
+
+public void setRole(String role) {
+    this.role = role;
+}
+
 }

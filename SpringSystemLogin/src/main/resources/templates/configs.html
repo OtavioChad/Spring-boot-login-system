@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Configurações</title>
+<link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+
+<div class="config-container">
+
+    <!-- LADO ESQUERDO -->
+    <div class="config-info">
+
+        <div class="conteudo-header">
+            <h2>Configurações</h2>
+            <p>Gerencie a segurança da sua conta.</p>
+        </div>
+
+        <div class="ticket-card">
+            <h3>🔒 Segurança da Conta</h3>
+            <p>Mantenha sua conta protegida alterando sua senha regularmente.</p>
+        </div>
+
+        <div class="ticket-card">
+            <h3>🛡️ Boas práticas</h3>
+            <p>Use uma senha forte contendo letras, números e caracteres especiais.</p>
+        </div>
+
+        <div class="ticket-card">
+            <h3>⚠️ Atenção</h3>
+            <p>Após alterar a senha, será necessário fazer login novamente.</p>
+        </div>
+
+    </div>
+
+    <!-- LADO DIREITO -->
+    <div class="config-password">
+
+        <div class="conteudo-header">
+            <h2>Alterar Senha</h2>
+            <p>Digite sua senha atual e escolha uma nova senha.</p>
+        </div>
+		
+		<div th:if="${param.erro == 'senha'}" class="error-message">
+			Senha atual incorreta.
+		</div>
+
+		<div th:if="${param.erro == 'confirmacao'}" class="error-message">
+			As senhas não coincidem.
+		</div>
+
+		<div th:if="${param.sucesso}" style="color:green; margin-bottom:15px;">
+			Senha alterada com sucesso.
+		</div>
+		
+        <form th:action="@{/configs/alterarSenha}" method="post">
+
+            <div class="input-group">
+                <label>Senha Atual</label>
+                <input type="password" name="senhaAtual" placeholder="Digite sua senha atual" required>
+            </div>
+
+            <div class="input-group">
+                <label>Nova Senha</label>
+                <input type="password" name="novaSenha" placeholder="Digite a nova senha" required>
+            </div>
+
+            <div class="input-group">
+                <label>Confirmar Nova Senha</label>
+                <input type="password" name="confirmarSenha" placeholder="Confirme a nova senha" required>
+            </div>
+
+            <button type="submit">Alterar Senha</button>
+            
+            <div class="input-group">
+				<button type="button" onclick="window.location.href='/'">
+					Voltar
+				</button>
+			</div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
