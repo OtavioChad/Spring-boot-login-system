@@ -8,6 +8,26 @@ O sistema permite que usuários criem tickets de suporte, enviem mensagens dentr
 
 ---
 
+# 📸 Screenshots
+
+### Login
+
+<img src="images/login.JPEG" width="700"/>
+
+### Cadastro
+
+<img src="images/cadastro.JPEG" width="700"/>
+
+### Sistema de Tickets
+
+<img src="images/ticket.JPEG" width="700"/>
+
+### Painel de Administração
+
+<img src="images/admin-usuarios.JPEG" width="700"/>
+
+---
+
 # Tecnologias Utilizadas
 
 * Java
@@ -50,11 +70,11 @@ O sistema permite que usuários criem tickets de suporte, enviem mensagens dentr
 * Atualização de status do ticket
 * Histórico de mensagens no ticket
 
-Status possíveis:
+### Status possíveis
 
-* ABERTO
-* EM_ANALISE
-* FINALIZADO
+* **ABERTO**
+* **EM_ANALISE**
+* **FINALIZADO**
 
 ## Administração
 
@@ -127,7 +147,6 @@ src/main/resources/static
 │
 ├── css
 │   └── styles.css
-
 ```
 
 ---
@@ -164,27 +183,27 @@ JDBCserver
 
 # Como executar o projeto
 
-1. Clonar o repositório
+### 1. Clonar o repositório
 
 ```
 git clone https://github.com/OtavioChad/Spring-boot-login-system.git
 ```
 
-2. Abrir o projeto no **Eclipse ou IntelliJ**
+### 2. Abrir o projeto no **Eclipse ou IntelliJ**
 
-3. Configurar as credenciais do banco MySQL na classe:
+### 3. Configurar as credenciais do banco MySQL na classe
 
 ```
 JDBCserver
 ```
 
-4. Executar a classe principal:
+### 4. Executar a classe principal
 
 ```
 SpringSystemLoginApplication.java
 ```
 
-5. Acessar no navegador:
+### 5. Acessar no navegador
 
 ```
 http://localhost:8080/login
@@ -194,7 +213,7 @@ http://localhost:8080/login
 
 # Objetivo do Projeto
 
-Esse projeto foi desenvolvido para **praticar desenvolvimento backend com Java e Spring Boot**, focando em:
+Esse projeto foi desenvolvido para praticar desenvolvimento backend com **Java e Spring Boot**, focando em:
 
 * Autenticação
 * Controle de acesso
@@ -207,4 +226,4 @@ Esse projeto foi desenvolvido para **praticar desenvolvimento backend com Java e
 
 # Autor
 
-Otávio Chad
+**Otávio Chad**
